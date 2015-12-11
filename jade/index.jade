@@ -1,0 +1,170 @@
+- var page = { title: "Title", subtitle: "Subtitle", author: "author", description: "description", tags: ["tag1", "tag2", "tag3"] }
+
+doctype html
+html(lang="de")
+    include includes/head.jade
+
+    body
+        section.menu
+            div.mega-menu
+                ul.level-1
+                    li.parent
+                        a(href="#") New
+                        ul.level-2
+                            li
+                                a(href="#") New In
+                            li
+                                a(href="#") Christmas Shop
+                    li.parent
+                        a(href="#") Designer
+                        ul.level-2
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                            li #[a(href="#") Brand]
+                    li.parent
+                        a(href="#") Bekleidung
+                        ul.level-2
+                            li
+                                a(href="#") Blusen
+                            li.parent
+                                a(href="#") Hosen
+                                ul.level-3
+                                    li
+                                        a(href="#") Hosen
+                                    li.parent
+                                        a(href="#") Jeans
+                                        ul.level-4
+                                            li
+                                                a(href="#") Jeans
+                                            li
+                                                a(href="#") Boyfriend Jeans
+                                            li
+                                                a(href="#") Flare Jeans
+                                            li
+                                                a(href="#") Skinny Jeans
+                            li.parent
+                                a(href="#") Jacken
+                                ul.level-3
+                                    li
+                                        a(href="#") Jacken
+                                    li
+                                        a(href="#") Capes
+                                    li
+                                        a(href="#") Lederjacken
+                                    li
+                                        a(href="#") Poncho
+                                    li
+                                        a(href="#") Winterjacken
+                            li.parent
+                                a(href="#") Kleider
+                                ul.level-3
+                                    li
+                                        a(href="#") Kleider
+                                    li
+                                        a(href="#") Cocktail Dress
+                            li.parent
+                                a(href="#") Mäntel
+                                ul.level-3
+                                    li
+                                        a(href="#") Mäntel
+                                    li
+                                        a(href="#") Wintermäntel
+                            li.parent
+                                a(href="#") Pullover
+                                ul.level-3
+                                    li
+                                        a(href="#") Pullover
+                                    li
+                                        a(href="#") Rollkragenpullover
+                            li
+                                a(href="#") Röcke
+                            li
+                                a(href="#") Strickjacken
+                            li
+                                a(href="#") Strümpfe
+                            li
+                                a(href="#") Swimwear
+                            li
+                                a(href="#") Tops
+                    li.parent
+                        a(href="#") Accessoires
+                        ul.level-2
+                            li
+                                a(href="#") Alle Accessoires
+                            li
+                                a(href="#") Schmuck
+                            li
+                                a(href="#") Gürtel
+                    li.parent
+                        a(href="#") Schuhe
+                        ul.level-2
+                            li
+                                a(href="#") Stiefeletten
+                    li
+                        a(href="#") Taschen
+                    li
+                        a(href="#") News & Trends
+                    li
+                        a(href="#") Sale   
+            div.side-nav
+                ul.cart
+                    li
+                        a.cart-contents(href="#" title="Meinen Warenkorb ansehen")
+                            span.count 0 Stücke #[span.amount CHF&nbsp;0]
+                        ul
+                            li
+                                div.widget.widget_shopping_cart
+                                    ul
+                                        li Es befinden sich keine Produkte im Warenkorb.
+                ul.nav-search
+                    li
+                        a.search-contents(href="#")
+                        ul
+                            li
+                                div.widget_product_search
+                                    form(role="search")
+                                label.screen-reader-text(for="s") Suche nach: 
+                                input#s(placeholder="Search", type="text")
+                                button.fa.fa-search(type="submit", name="submit", value="search")
+        // menu end
+        script(src="/js/jquery.js")
+        script(src="/js/jquery.openSub.js")
+        script(src="/js/script.js")
+    // body end
+// html end

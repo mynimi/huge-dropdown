@@ -1,0 +1,258 @@
+$menu-break: 900px;
+$level-1-bg: white;
+$level-1-color: #555;
+$level-2-bg: white;
+$level-2-color: #555;
+$level-3-bg: white;
+$level-3-color: #555;
+$level-4-bg: white;
+$level-4-color: #555;
+$line-color: #ddd;
+$subtle-line-color: rgba(black, .1);
+
+@mixin flexbox($d, $w, $j, $a) {
+    display: flex;
+    flex-direction: $d;
+    flex-wrap: $w;
+    justify-content: $j;
+    align-items: $a;
+}
+
+.toggle-bar{
+    max-width: 100%;
+    position: relative;
+    background: $level-1-bg;
+    border-top: 1px solid $line-color;
+    border-bottom: 1px solid $line-color;
+    height: 30px;
+    margin: 20px;
+    font: 300 14px/1.2 "Helvetica Neue",sans-serif;
+    text-transform: uppercase;
+    color: $level-1-color;
+    z-index: 8;
+
+    a,
+    .menu-toggle{
+        color: $level-1-color;
+        &:hover{
+            color: darken($level-1-color, 10%);
+            cursor: pointer;
+        }
+    }
+}
+
+section.menu{
+    max-width: 100%;
+    position: relative;
+    background: $level-1-bg;
+    border-top: 1px solid $line-color;
+    border-bottom: 1px solid $line-color;
+    height: 30px;
+    margin: 20px;
+    font: 300 14px/1.2 "Helvetica Neue",sans-serif;
+    text-transform: uppercase;
+    color: $level-1-color;
+    z-index: 9;
+
+    // reset list
+    ul,
+    li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        white-space: nowrap;
+    }
+
+    // responsive off-canvas version
+    @media screen and (max-width: $menu-break){
+        width: 300px;
+        height: 100%;
+        margin: 0;
+        border: 0px solid transparent;
+        box-sizing: border-box;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: auto;
+        transition: .3s all ease;
+        transform: translateX(-300px);
+
+        &.open{
+            transform: translateX(0);
+        }
+
+        // make space for elements a little bigger and add subtle line
+        li{
+            border-bottom: 1px solid rgba(black, .05);
+            padding: 5px 10px;
+        }
+
+        // style toggle close for responsive menu
+        .toggle-close{
+            font-size: 1.5em;
+            padding: 10px;
+            display: block;
+            width: 100%;
+            text-align: right;
+            box-sizing: border-box;
+
+            &:hover{
+                cursor: pointer;
+                color: darken($level-1-color, 10%);
+            }
+        }
+    }
+
+    // basic link styling
+    a{
+        color: $level-1-color;
+        text-decoration: none;
+
+        &:hover{
+            color: darken($level-1-color, 10%);
+        }
+    }
+
+    // add little arrow
+    .parent{
+        > a:after{
+            content: "\25b8";
+
+            @media screen and (max-width: $menu-break){
+                content: "\25be";
+            }
+        }
+    }
+
+    // have more than 13 items in multiple columns
+    @media screen and (min-width: $menu-break+1){
+        .group-wrap{
+            width: auto;
+            @include flexbox(row, nowrap, space-around, flex-start);
+
+            .group{
+                padding: 10px;
+            }
+        }
+    }
+
+    // float menu and cart on each side when in full view
+    > div{
+        @media screen and (min-width: $menu-break + 1){
+            &:nth-of-type(1){
+                float: left;
+            }
+            &:nth-of-type(2){
+                float: right;
+            }
+        }
+    }
+
+    // level-1
+    > div > ul {
+        position: relative;
+        line-height: 30px;
+
+        // create "bar" and reset it for responsive view (using display)
+        > li{
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+
+            @media screen and (max-width: $menu-break){
+                display: block;
+                margin-right: 0;
+            }
+
+            // set arrow down on level 1 instead of default right
+            @media screen and (min-width: $menu-break){
+                &.parent{
+                    > a:after{
+                        content: "\25be";
+                    }
+                }
+            }
+
+            // level 2
+            > ul,
+            .level-2 {
+                width: auto;
+                background: $level-2-bg;
+                display: none;
+                position: absolute;
+                top: 100%;
+                z-index: 10;
+                color: $level-2-color;
+
+                @media screen and (max-width: $menu-break){
+                    width: 100%;
+                    position: relative;
+                }
+
+                a {
+                    color: $level-2-color;
+
+                    &:hover{
+                        color: darken($level-2-color, 10%);
+                    }
+                }
+
+                > li{
+                    position: relative;
+
+                    // level-3
+                    > ul {
+                        position: absolute;
+                        top: 0;
+                        left: 100%;
+                        background: $level-3-bg;
+                        display: none;
+                        color: $level-3-color;
+
+                        @media screen and (max-width: $menu-break){
+                            position: relative;
+                            left: 0;
+                            top: 100%;
+                        }
+
+                        a{
+                            color: $level-3-color;
+
+                            &:hover{
+                                color: darken($level-3-color, 10%);
+                            }
+                        }
+
+                        > li{
+                            position: relative;
+                            // level-4
+                            > ul{
+                                width: auto;
+                                position: absolute;
+                                top: 0;
+                                left: 100%;
+                                background: $level-4-bg;
+                                display: none;
+                                color: $level-4-color;
+
+                                @media screen and (max-width: $menu-break){
+                                    width: 100%;
+                                    position: relative;
+                                    top: 100%;
+                                    left: 0;
+                                }
+
+                                a{
+                                    color: $level-4-color;
+                                    &:hover{
+                                        color: darken($level-4-color, 10%);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
